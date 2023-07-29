@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+</head>
+<body>
+    <!-- <script src="html2canvas.js"></script> -->
+
+    <main>
+        <div class="form-create-subject">
+            <div class="content-form">
+                <form>
+                    <h2>Adicionar Disciplina</h2>
+                    <div>
+                        <label for="nome">Nome da matéria</label>
+                        <input required type="text" name="nome" id="nome">
+                    </div>
+                    <div>
+                        <label for="professor">Professor</label>
+                        <input type="text" name="professor" id="professor">
+                    </div>
+                    <div>
+                        <label for="nome">Carga horária</label>
+                        <input type="number" name="cargaHoraria" id="cargaHoraria">
+                    </div>
+                    <div>
+                        <label for="nome">Horário</label>
+                        <input required type="text" name="horario" id="horario">
+                    </div>
+                    <div>
+                        <label for="nome">local</label>
+                        <input type="text" name="local" id="local">
+                    </div>                
+                </form>
+                <div>
+                    <button id="submit-form-create-subject" class="btn">Criar</button>
+                    <button class="btn" id="cancel-create-subject">Cancelar</button>
+                </div>
+            </div>
+        </div>
+        <section>
+            <h2 class="title">Disciplinas</h2>
+
+            <table id="table-disciplinas">
+                <tr>
+                    <th></th>
+                    <th>Componente curricular</th>
+                    <th>Professor</th>
+                    <th>Horário</th>
+                    <th>Local</th>
+                    <th style="max-width: 45px;"></th>
+                </tr>
+                <!-- <tr>
+                    <td><input type="checkbox" name="disciplina" id="0"></td>
+                    <td>IMD0129</td>
+                    <td>FUNDAMENTOS MATEMÁTICOS DA COMPUTAÇÃO I</td>
+                    <td>90h</td>
+                    <td>246T12</td>
+                    <td>DIMAP</td>
+                </tr> -->
+            </table>
+            <button class="btn-add-subject btn">
+                + Adicionar disciplina
+            </button>
+
+            <button class="btn btn-salvar">Salvar</button>
+        </section>
+
+        <section>
+            <h2 class="title">Horários</h2>
+
+            <table id="table-horarios">
+                <tr>
+                    <th>Horário</th>
+                    <th>Segunda</th>
+                    <th>Terça</th>
+                    <th>Quarta</th>
+                    <th>Quinta</th>
+                    <th>Sexta</th>
+                </tr>
+                <tr>
+                    <td>07:00 - 08:40</td>
+                    <td id="2-M12"> </td>
+                    <td id="3-M12"> </td>
+                    <td id="4-M12"> </td>
+                    <td id="5-M12"> </td>
+                    <td id="6-M12"> </td>
+                </tr>
+                <tr>
+                    <td>08:55 - 10:35</td>
+                    <td id="2-M34"> </td>
+                    <td id="3-M34"> </td>
+                    <td id="4-M34"> </td>
+                    <td id="5-M34"> </td>
+                    <td id="6-M34"> </td>
+                </tr>
+                <tr>
+                    <td>10:50 - 12:30</td>
+                    <td id="2-M56"> </td>
+                    <td id="3-M56"> </td>
+                    <td id="4-M56"> </td>
+                    <td id="5-M56"> </td>
+                    <td id="6-M56"> </td>
+                </tr>
+                <tr>
+                    <td>13:00 - 14:40</td>
+                    <td id="2-T12"> </td>
+                    <td id="3-T12"> </td>
+                    <td id="4-T12"> </td>
+                    <td id="5-T12"> </td>
+                    <td id="6-T12"> </td>
+                </tr>
+                <tr>
+                    <td>14:55 - 16:35</td>
+                    <td id="2-T34"> </td>
+                    <td id="3-T34"> </td>
+                    <td id="4-T34"> </td>
+                    <td id="5-T34"> </td>
+                    <td id="6-T34"> </td>
+                </tr>
+                <tr>
+                    <td>16:50 - 18:30</td>
+                    <td id="2-T56"> </td>
+                    <td id="3-T56"> </td>
+                    <td id="4-T56"> </td>
+                    <td id="5-T56"> </td>
+                    <td id="6-T56"> </td>
+                </tr>
+                <tr>
+                    <td>18:45 - 20:25</td>
+                    <td id="2-N12"> </td>
+                    <td id="3-N12"> </td>
+                    <td id="4-N12"> </td>
+                    <td id="5-N12"> </td>
+                    <td id="6-N12"> </td>
+                </tr>
+                <tr>
+                    <td>20:35 - 22:15</td>
+                    <td id="2-N34"> </td>
+                    <td id="3-N34"> </td>
+                    <td id="4-N34"> </td>
+                    <td id="5-N34"> </td>
+                    <td id="6-N34"> </td>
+                </tr>
+            </table>
+            <button class="btn btn-add-subject" onclick="doCapture()">Exportar Tabela</button>
+        </section>
+
+    </main>
+    
+    <script>
+        function doCapture() {
+            html2canvas(document.getElementById('table-horarios')).then(function(canvas) {
+                // document.body.appendChild(canvas);
+                // console.log(canvas);
+                // console.log(canvas.toDataURL("image/jpeg", 0.9));
+                var a = document.createElement('a');
+                a.id = 'elementA'
+                a.href = canvas.toDataURL("image/png");
+                a.download = "horarios_de_aula_ufrn.png";
+                a.click();
+            })
+        }
+    </script>
+
+    <script src="main.js"></script>
+    <script src="create_subject.js"></script>
+</body>
+</html>
