@@ -1,126 +1,3 @@
-// var subjects = [
-//     {
-//         'codigo':'DIM0121', 
-//         'componente':"FUNDAMENTOS MATEMÁTICOS DA COMPUTAÇÃO II", 
-//         'carga_horaria':90, 
-//         'horario':'246M34', 
-//         'local':"DIMAP",
-//         'professor': ""
-//     },{
-//         'codigo':'DIM0121', 
-//         'componente':"FUNDAMENTOS MATEMÁTICOS DA COMPUTAÇÃO II", 
-//         'carga_horaria':90, 
-//         'horario':'246N12', 
-//         'local':"DIMAP",
-//         'professor': ""
-//     },{
-//         'codigo':'DIM0132', 
-//         'componente':"PROBABILIDADE", 
-//         'carga_horaria':60, 
-//         'horario':'35M34', 
-//         'local':"DIMAP",
-//         'professor': ""
-//     },{
-//         'codigo':'IMD0029', 
-//         'componente':"ESTRUTURA DE DADOS BÁSICAS I", 
-//         'carga_horaria':60, 
-//         'horario':'35T12', 
-//         'local':"IMD",
-//         'professor': ""
-//     },{
-//         'codigo':'IMD0029', 
-//         'componente':"ESTRUTURA DE DADOS BÁSICAS I", 
-//         'carga_horaria':60, 
-//         'horario':'35N12', 
-//         'local':"IMD",
-//         'professor': ""
-//     },{
-//         'codigo':'IMD0029', 
-//         'componente':"ESTRUTURA DE DADOS BÁSICAS I", 
-//         'carga_horaria':60, 
-//         'horario':'35M12', 
-//         'local':"IMD",
-//         'professor': ""
-//     },{
-//         'codigo':'IMD0030', 
-//         'componente':"LINGUAGEM DE PROGRAMAÇÃO I", 
-//         'carga_horaria':60, 
-//         'horario':'35T34', 
-//         'local':"IMD",
-//         'professor': ""
-//     },{
-//         'codigo':'IMD0030', 
-//         'componente':"LINGUAGEM DE PROGRAMAÇÃO I", 
-//         'carga_horaria':60, 
-//         'horario':'35N34', 
-//         'local':"IMD",
-//         'professor': ""
-//     },{
-//         'codigo':'IMD0033', 
-//         'componente':"PROBABILIDADE", 
-//         'carga_horaria':60, 
-//         'horario':'24M34', 
-//         'local':"IMD",
-//         'professor': ""
-//     },{
-//         'codigo':'IMD0033', 
-//         'componente':"PROBABILIDADE", 
-//         'carga_horaria':60, 
-//         'horario':'24N34', 
-//         'local':"IMD",
-//         'professor': ""
-//     },{
-//         'codigo':'IMD0038', 
-//         'componente':"FUNDAMENTOS MATEMÁTICOS DA COMPUTAÇÃO II", 
-//         'carga_horaria':90, 
-//         'horario':'246M56', 
-//         'local':"IMD",
-//         'professor': ""
-//     },{
-//         'codigo':'IMD0121', 
-//         'componente':"ARQUITETURA DE COMPUTADORES", 
-//         'carga_horaria':60, 
-//         'horario':'35M56', 
-//         'local':"IMD",
-//         'professor': ""
-//     },
-//     {
-//         'codigo':'IMD0121', 
-//         'componente':"ARQUITETURA DE COMPUTADORES", 
-//         'carga_horaria':60, 
-//         'horario':'24N12', 
-//         'local':"IMD",
-//         'professor': ""
-//     }
-// ];
-
-// var subjects = [
-//     {
-//         'codigo':'DIM0121', 
-//         'componente':"FUNDAMENTOS MATEMÁTICOS DA COMPUTAÇÃO II", 
-//         'carga_horaria':90, 
-//         'horario':'246M34', 
-//         'local':"DIMAP",
-//         'professor': "",
-//         'selecionada': true
-//     },{
-//         'codigo':'DIM0121', 
-//         'componente':"FUNDAMENTOS MATEMÁTICOS DA COMPUTAÇÃO II", 
-//         'carga_horaria':90, 
-//         'horario':'246M34', 
-//         'local':"DIMAP",
-//         'professor': "",
-//         'selecionada': false
-//     },{
-//         'codigo':'DIM0121', 
-//         'componente':"FUNDAMENTOS MATEMÁTICOS DA COMPUTAÇÃO II", 
-//         'carga_horaria':90, 
-//         'horario':'246M34', 
-//         'local':"DIMAP",
-//         'professor': "",
-//         'selecionada': true
-//     }
-// ];
 
 var subjects = JSON.parse(localStorage.getItem("materiasHoraios@ufrn")) || [];
 var btnAddSubject = document.querySelector('.btn-add-subject');
@@ -132,17 +9,9 @@ var timeout_message_card;
 
 
 
-document.querySelector('#submit-form-create-subject').addEventListener('click', create_subject);
+document.querySelector('#submit-form-create-subject').addEventListener('click', submit_form);
 
-btnAddSubject.addEventListener('click', ()=>{
-    document.querySelector('.form-create-subject').style.visibility = 'visible';
-});
-
-document.querySelector('#cancel-create-subject').addEventListener('click', () => {
-    document.querySelector('.form-create-subject').style.visibility = 'hidden';
-    // document.getElementById('#reset-form').reset();
-    document.querySelector('.form-create-subject form').reset();
-});
+document.querySelector('#cancel-create-subject').addEventListener('click', cancel_form);
 
 document.querySelector('.btn-salvar').addEventListener('click', save);
 sort_subjects();
@@ -171,27 +40,20 @@ function view_subjects() {
                         <td>${subjects[idc]['professor']}</td> 
                         <td>${subjects[idc]['horario']}</td>
                         <td>${subjects[idc]['local']}</td>
-                        <td><span onclick="delete_subject(${idc})" class='deletar-materia'>Deletar</span></td>`;
+                        <td class='actions-table'>
+                            <span onclick="delete_subject(${idc})" class='deletar-materia'>Deletar</span>    
+                            <span onclick="view_form(${idc})" class='editar-materia'>Editar</span>
+                        </td>`;
         table.appendChild(tr);
     }
 }
 
 function get_subjects(idcElement) {
-    // var selectedSubjects = document.querySelectorAll("input[type='checkbox']:checked");
-    // var idSubjects = [];
-    // console.log(subjects[0]['selecionada']);
-    // subjects[idcElement]['selecionada'];
     if (subjects[idcElement]['selecionada']) {
         subjects[idcElement]['selecionada'] = false;
     }  else {
         subjects[idcElement]['selecionada'] = true;
     }
-    // for (var subject of selectedSubjects) {
-    //     idSubjects.push(parseInt(subject.id));
-    // }
-    
-    // console.log(idSubjects);
-
     update_timetables();
 }
 
@@ -207,8 +69,6 @@ function clean_timetable() {
 function update_timetables() {
     var idSubjects = subjects.filter(function(obj){return obj['selecionada']==true});
 
-    console.log(idSubjects);
-    // console.log(subjects);
     clean_timetable();
 
     var dias = [];
@@ -234,47 +94,64 @@ function update_timetables() {
 
 function clean_table() {
     document.querySelector('#table-disciplinas').innerHTML = `<tr>
-    <th></th>
-    <th>Componente curricular</th>
-    <th>Professor</th>
-    <th>Horário</th>
-    <th>Local</th>
-    <th></th>
-</tr>`;
+        <th></th>
+        <th>Componente curricular</th>
+        <th>Professor</th>
+        <th>Horário</th>
+        <th>Local</th>
+        <th>Ações</th>
+    </tr>`;
 }
 
-function create_subject() {
+function view_form(idc) {
+    
+    if (idc != undefined) {
+        document.getElementById('nome').value = subjects[idc]['componente'];
+        document.getElementById('professor').value = subjects[idc]['professor'];
+        document.getElementById('cargaHoraria').value = subjects[idc]['cargaHoraria'];
+        document.getElementById('horario').value = subjects[idc]['horario'];
+        document.getElementById('local').value = subjects[idc]['local'];
+        document.getElementById('id').value = idc;
+    }
+
+    document.querySelector('.form-create-subject').style.visibility = 'visible';
+}
+
+function cancel_form() {
+    document.querySelector('.form-create-subject').style.visibility = 'hidden';
+    document.querySelector('.form-create-subject form').reset();
+}
+
+function submit_form() {
     const nome = document.getElementById('nome').value;
     const professor = document.getElementById('professor').value;
     const cargaHoraria = Number(document.getElementById('cargaHoraria').value);
     const horario = document.getElementById('horario').value;
     const local = document.getElementById('local').value;
+    const id = document.getElementById('id').value;
 
-    if (nome!="" && horario !="") {
-        var subject = {
-            'professor':professor.toUpperCase(), 
-            'componente':nome.toUpperCase(), 
-            'carga_horaria':cargaHoraria, 
-            'horario':horario.toUpperCase(), 
-            'local':local.toUpperCase(),
-            'selecionada':false
+    if (id=="") {
+        if (nome!="" && horario !="") {
+            create_subject(nome, professor, cargaHoraria, horario, local);
+            update_timetables();
+            show_confirmation_card("Matéria adicionada!");
         }
-        subjects.push(subject);
-        clean_table();
-        sort_subjects();
-        view_subjects();
-
-        document.querySelector('.form-create-subject').style.visibility = 'hidden';
-        document.querySelector('.form-create-subject form').reset();
-
-        show_confirmation_card("Matéria adicionada com sucesso!");
+    } else {
+        edit_subject(id, nome, professor, cargaHoraria, horario, local);
+        update_timetables();
+        show_confirmation_card("Matéria editada!");
     }
+
+    clean_table();
+    sort_subjects();
+    view_subjects();
+
+    document.querySelector('.form-create-subject').style.visibility = 'hidden';
+    document.querySelector('.form-create-subject form').reset();
+
 }
 
 function hidden_confirmation_card() {
-    // clearTimeout(tempo);
-    // clearTimeout(timeout_message_card);
-
     confirmationCard.style.visibility = 'hidden';
     confirmationCard.style.transform = 'translate(-50%, -60px)';
     confirmationCard.style.opacity = '0%';
@@ -297,15 +174,36 @@ function show_confirmation_card(message) {
 function save() {
     localStorage.setItem("materiasHoraios@ufrn", JSON.stringify(subjects));
 
-    show_confirmation_card("Alterações salvas");
+    show_confirmation_card("Alterações salvas!");
 }
 
+function create_subject(nome, professor, cargaHoraria, horario, local) {
+    var subject = {
+        'professor':professor.toUpperCase(), 
+        'componente':nome.toUpperCase(), 
+        'carga_horaria':cargaHoraria, 
+        'horario':horario.toUpperCase(), 
+        'local':local.toUpperCase(),
+        'selecionada':false
+    }
+    subjects.push(subject);
+}
 
 function delete_subject(idc) {
+
     subjects.splice(idc, 1);
-    console.log(subjects);
+
     clean_table();
     view_subjects();
+    update_timetables();
 
     show_confirmation_card("Matéria excluída com sucesso!");
+}
+
+function edit_subject(idc, nome, professor, cargaHoraria, horario, local) {
+    subjects[Number(idc)]['componente'] = nome.toUpperCase();
+    subjects[Number(idc)]['professor'] = professor.toUpperCase();
+    subjects[Number(idc)]['cargaHoraria'] = cargaHoraria;
+    subjects[Number(idc)]['horario'] = horario.toUpperCase();
+    subjects[Number(idc)]['local'] = local.toUpperCase();
 }

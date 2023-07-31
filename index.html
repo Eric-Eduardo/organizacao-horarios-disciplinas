@@ -6,7 +6,6 @@
     <title>Organização de horários</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"> -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
 
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
@@ -37,18 +36,16 @@
                         <label for="nome">local</label>
                         <input type="text" name="local" id="local">
                     </div>                
+                    <input hidden type="text" name="id" id="id">
                 </form>
                 <div>
-                    <button id="submit-form-create-subject" class="btn">Criar</button>
+                    <button id="submit-form-create-subject" class="btn">Salvar</button>
                     <button class="btn" id="cancel-create-subject">Cancelar</button>
                 </div>
             </div>
         </div>
         <div class="save-confirmation-card">
-            <!-- <i class="uis uis-check-circle"></i>
-            <i class="uis uis-check-square"></i> -->
             <i class="uis uis-check"></i>
-            <!-- <i class="uil uil-check-circle"></i> -->
             <p>Alterações salvas!</p>
         </div>
         <section>
@@ -61,18 +58,10 @@
                     <th>Professor</th>
                     <th>Horário</th>
                     <th>Local</th>
-                    <th style="max-width: 45px;"></th>
+                    <th>Ações</th>
                 </tr>
-                <!-- <tr>
-                    <td><input type="checkbox" name="disciplina" id="0"></td>
-                    <td>IMD0129</td>
-                    <td>FUNDAMENTOS MATEMÁTICOS DA COMPUTAÇÃO I</td>
-                    <td>90h</td>
-                    <td>246T12</td>
-                    <td>DIMAP</td>
-                </tr> -->
             </table>
-            <button class="btn-add-subject btn">
+            <button onclick="view_form()" class="btn-add-subject btn">
                 + Adicionar disciplina
             </button>
 
@@ -160,24 +149,8 @@
         </section>
 
     </main>
-    
-    <script>
-        function doCapture() {
-            html2canvas(document.getElementById('table-horarios')).then(function(canvas) {
-                // document.body.appendChild(canvas);
-                // console.log(canvas);
-                // console.log(canvas.toDataURL("image/jpeg", 0.9));
-                var a = document.createElement('a');
-                a.id = 'elementA'
-                a.href = canvas.toDataURL("image/png");
-                a.download = "horarios_de_aula_ufrn.png";
-                a.click();
-            })
-        }
-    </script>
 
     <script src="main.js"></script>
-    
-    <script src="create_subject.js"></script>
+    <script src="capture_table.js"></script>
 </body>
 </html>
