@@ -123,8 +123,14 @@
 // ];
 
 var subjects = JSON.parse(localStorage.getItem("materiasHoraios@ufrn")) || [];
-
 var btnAddSubject = document.querySelector('.btn-add-subject');
+const confirmationCard = document.querySelector('.save-confirmation-card');
+const messageConfirmationCard = document.querySelector('.save-confirmation-card p');
+
+var timeout_card;
+var timeout_message_card;
+
+
 
 document.querySelector('#submit-form-create-subject').addEventListener('click', create_subject);
 
@@ -260,11 +266,38 @@ function create_subject() {
 
         document.querySelector('.form-create-subject').style.visibility = 'hidden';
         document.querySelector('.form-create-subject form').reset();
+
+        show_confirmation_card("Matéria adicionada com sucesso!");
     }
+}
+
+function hidden_confirmation_card() {
+    // clearTimeout(tempo);
+    // clearTimeout(timeout_message_card);
+
+    confirmationCard.style.visibility = 'hidden';
+    confirmationCard.style.transform = 'translate(-50%, -60px)';
+    confirmationCard.style.opacity = '0%';
+
+    timeout_message_card = setTimeout(()=>{messageConfirmationCard.innerHTML = "";}, 300);
+}
+
+function show_confirmation_card(message) {
+    confirmationCard.style.visibility = 'visible';
+    confirmationCard.style.transform = 'translate(-50%, 0px)';
+    confirmationCard.style.opacity = '100%';
+    messageConfirmationCard.innerHTML = message;
+
+    clearTimeout(timeout_card);
+    clearTimeout(timeout_message_card);
+
+    timeout_card = setTimeout(hidden_confirmation_card, 5000);
 }
 
 function save() {
     localStorage.setItem("materiasHoraios@ufrn", JSON.stringify(subjects));
+
+    show_confirmation_card("Alterações salvas");
 }
 
 
@@ -273,4 +306,6 @@ function delete_subject(idc) {
     console.log(subjects);
     clean_table();
     view_subjects();
+
+    show_confirmation_card("Matéria excluída com sucesso!");
 }

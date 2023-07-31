@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Organização de horários</title>
     <link rel="stylesheet" href="style.css">
-    
+
+    <!-- <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"> -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 </head>
 <body>
-    <!-- <script src="html2canvas.js"></script> -->
-
     <main>
         <div class="form-create-subject">
             <div class="content-form">
@@ -30,7 +31,7 @@
                     </div>
                     <div>
                         <label for="nome">Horário</label>
-                        <input required type="text" name="horario" id="horario">
+                        <input placeholder="Exemplo: 246M12" type="text" name="horario" id="horario">
                     </div>
                     <div>
                         <label for="nome">local</label>
@@ -42,6 +43,13 @@
                     <button class="btn" id="cancel-create-subject">Cancelar</button>
                 </div>
             </div>
+        </div>
+        <div class="save-confirmation-card">
+            <!-- <i class="uis uis-check-circle"></i>
+            <i class="uis uis-check-square"></i> -->
+            <i class="uis uis-check"></i>
+            <!-- <i class="uil uil-check-circle"></i> -->
+            <p>Alterações salvas!</p>
         </div>
         <section>
             <h2 class="title">Disciplinas</h2>
@@ -169,6 +177,7 @@
     </script>
 
     <script src="main.js"></script>
+    
     <script src="create_subject.js"></script>
 </body>
 </html>

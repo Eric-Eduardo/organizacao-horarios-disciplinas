@@ -188,3 +188,38 @@ input:focus {
 button {
     display: di;
 }
+
+.save-confirmation-card {
+    background-color: #73cc4d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f4ffef;
+    position: fixed;
+    top: 10px;
+    transform: translate(-50%, -60px);
+    left: 50%;
+    padding: .7rem 1.5rem;
+    gap: 5px;
+    border-radius: 10px;
+    visibility: hidden;
+    /* transform: translate(0, 50px); */
+    transition: all .3s;
+    opacity: 0%;
+}
+
+.save-confirmation-card p {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+.uis-check {
+    font-size: 25px;
+}
+
+/* .save-confirmation-card:hover {
+    opacity: 100%;
+    transform: translate(-50%, 0px);
+} */
+
