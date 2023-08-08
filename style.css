@@ -70,26 +70,33 @@ table .editar-materia {
     font-size: 13px;
 }
 
+.btn.green {
+    background-color:  #73cc4d;
+}
+
+.btn.blue {
+    background-color: #5b79c4;
+}
+
+.btn.red {
+    background-color: #cc2929;
+}
+
 .btn:hover {
     opacity: 87%;
     cursor: pointer;
 }
 
-.btn-salvar {
-    background-color: #73cc4d;
-}
-.btn-add-subject {
-    background-color: #5b79c4;
-}
-
 table#table-horarios {
     table-layout: fixed;
+    color: #2a4fae;
+    /* color: #ae2a2a; */
 }
 
-table#table-horarios td{
+/* table#table-horarios td{
     height: 30px;
     color: #2a4fae;
-}
+} */
 
 table#table-horarios th,  table#table-horarios td {
     text-align: center;
@@ -98,16 +105,18 @@ table#table-horarios th,  table#table-horarios td {
 table#table-horarios tr td:first-child {
     font-weight: bold;
     color: #5b79c4;
+    /* margin-top: 10px; */
 }
 
 table#table-horarios tr td:not(:first-child) {
     border-left: 1px solid #d9edfc;
     text-align: center;
+    /* color: #2a4fae; */
 }
 
-table#table-horarios tr:not(:first-child){
+/* table#table-horarios tr:not(:first-child){
     height: 53px;
-}
+} */
 
 input[type="checkbox"] {
     height: 15px;
@@ -171,17 +180,6 @@ input:focus {
     outline: 1px solid #5b79c4;
 }
 
-.form-create-subject button{
-    background-color: #5b79c4;
-}
-
-.form-create-subject #submit-form-create-subject{
-    background-color: #73cc4d;
-}
-
-button {
-    display: di;
-}
 
 .save-confirmation-card {
     background-color: #73cc4d;
@@ -210,5 +208,14 @@ button {
 .uis-check {
     font-size: 25px;
 }
-
+/* 
+table#table-horarios .turno-M {
+    background-color: #f7f9ff;
+}
+table#table-horarios .turno-T {
+    background-color: #e2e9ff;
+}
+table#table-horarios .turno-N {
+    background-color: #c9d6ff;
+} */
 

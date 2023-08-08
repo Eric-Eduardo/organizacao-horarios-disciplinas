@@ -39,8 +39,8 @@
                     <input hidden type="text" name="id" id="id">
                 </form>
                 <div>
-                    <button id="submit-form-create-subject" class="btn">Salvar</button>
-                    <button class="btn" id="cancel-create-subject">Cancelar</button>
+                    <button class="btn green" id="submit-form-create-subject">Salvar</button>
+                    <button class="btn blue" id="cancel-create-subject">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -61,11 +61,11 @@
                     <th>Ações</th>
                 </tr>
             </table>
-            <button onclick="view_form()" class="btn-add-subject btn">
+            <button onclick="view_form()" class="btn-add-subject btn blue">
                 + Adicionar disciplina
             </button>
-
-            <button class="btn btn-salvar">Salvar</button>
+            <button onclick="get_timetables()" class="btn blue" id="create-table-disciplinas">Criar Tabela de Horários</button>
+            <button class="btn green btn-salvar">Salvar</button>
         </section>
 
         <section>
@@ -80,72 +80,8 @@
                     <th>Quinta</th>
                     <th>Sexta</th>
                 </tr>
-                <tr>
-                    <td>07:00 - 08:40</td>
-                    <td id="2-M12"> </td>
-                    <td id="3-M12"> </td>
-                    <td id="4-M12"> </td>
-                    <td id="5-M12"> </td>
-                    <td id="6-M12"> </td>
-                </tr>
-                <tr>
-                    <td>08:55 - 10:35</td>
-                    <td id="2-M34"> </td>
-                    <td id="3-M34"> </td>
-                    <td id="4-M34"> </td>
-                    <td id="5-M34"> </td>
-                    <td id="6-M34"> </td>
-                </tr>
-                <tr>
-                    <td>10:50 - 12:30</td>
-                    <td id="2-M56"> </td>
-                    <td id="3-M56"> </td>
-                    <td id="4-M56"> </td>
-                    <td id="5-M56"> </td>
-                    <td id="6-M56"> </td>
-                </tr>
-                <tr>
-                    <td>13:00 - 14:40</td>
-                    <td id="2-T12"> </td>
-                    <td id="3-T12"> </td>
-                    <td id="4-T12"> </td>
-                    <td id="5-T12"> </td>
-                    <td id="6-T12"> </td>
-                </tr>
-                <tr>
-                    <td>14:55 - 16:35</td>
-                    <td id="2-T34"> </td>
-                    <td id="3-T34"> </td>
-                    <td id="4-T34"> </td>
-                    <td id="5-T34"> </td>
-                    <td id="6-T34"> </td>
-                </tr>
-                <tr>
-                    <td>16:50 - 18:30</td>
-                    <td id="2-T56"> </td>
-                    <td id="3-T56"> </td>
-                    <td id="4-T56"> </td>
-                    <td id="5-T56"> </td>
-                    <td id="6-T56"> </td>
-                </tr>
-                <tr>
-                    <td>18:45 - 20:25</td>
-                    <td id="2-N12"> </td>
-                    <td id="3-N12"> </td>
-                    <td id="4-N12"> </td>
-                    <td id="5-N12"> </td>
-                    <td id="6-N12"> </td>
-                </tr>
-                <tr>
-                    <td>20:35 - 22:15</td>
-                    <td id="2-N34"> </td>
-                    <td id="3-N34"> </td>
-                    <td id="4-N34"> </td>
-                    <td id="5-N34"> </td>
-                    <td id="6-N34"> </td>
-                </tr>
             </table>
-            <button class="btn btn-add-subject" onclick="doCapture()">Exportar Tabela</button>
+            <button class="btn blue btn-add-subject" onclick="doCapture()">Exportar Tabela</button>
         </section>
 
     </main>
